@@ -1,0 +1,32 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    
+  <h1>Make Your Blog! </h1>
+
+
+    <h2>글 목록 입니다</h2><br>
+    
+    <div class="row">
+    {% for post in all_posts %}
+    <div class="card border-dark mb-3 col-4" style="max-width: 18rem;">
+        <p>title: {{ post.title }}</p>
+        <p>content: {{ post.content }}</p>
+        <p>writer: {{ post.writer }}</p>
+        <p>{{ post.created_at }}</p>
+        
+        <a href="{% url 'new:show' post.id %}" >보러가기</a>
+    </div>
+    {% endfor %}
+    </div>
+    
+    <a href="{% url 'new:create' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"> 글 작성하기</a>
+    
+    
+    
+</div>    
+    {% endblock %}
+  

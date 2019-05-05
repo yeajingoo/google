@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<style>
+@font-face {
+font-family: 'Binggrae-Bold';
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+font-weight: normal; font-style: normal;
+}
+.wrapper{
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+  width: 100%;
+  padding:0 20px;
+}
+.contact-form{
+  max-width: 700px;
+  margin: 0 auto;
+  background: rgba(0,0,0,0,8);
+  padding: 30px;
+  border-radius: 5px;
+  display: flex;
+  box-shadow: 0 0 10px;
+  font-family: 'Binggrae-Bold';
+}
+.input-fields{
+  display: flex;
+  flex-direction: column;
+  margin-right: 4%;
+}
+.input-fields,
+.msg{
+  width: 100%;
+}
+.input-fields .input,
+.msg textarea{
+  margin: 10px 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid #c5ecfd;
+  padding: 10px;
+  color: #000000;
+  width: 100%;
+}
+.msg textarea{
+  height: 500px;
+  border: 2px solid #c5ecfd;
+}
+::-webkit-input-placehloder{
+  color: #c5ecfd;
+}
+::-moz-input-placehloder{
+  color: #c5ecfd;
+}
+::-ms-input-placehloder{
+  color: #c5ecfd;
+}
+.btn{
+  background: #39b7dd;
+  text-align: center;
+  padding: 10px;
+  margin-left: 20px;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  text-transform: uppercase;
+  width:80px;
+  float:right;
+}
+@media screen and (max-width: 600px){
+  .contact-form{
+    flex-direction: column;
+  }
+  .msg textarea{
+    height: 80px;
+  }
+  .input-fiedls,
+  .msg{
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+        <form action="{% url 'new:save' %}" method="POST">
+<div class="wrapper">
+  <div class="contact-form">
+        <form action="{% url 'new:save' %}" method="POST">
+                {% csrf_token %}
+    <div class="input-fields">
+
+      <input type="text" class="input" placeholder="이름" name="nam">
+      <input type="text" class="input" placeholder="나라" name="country">
+      <input type="text" class="input" placeholder="지역" name="region">
+      <input type="text" class="input" placeholder="나이" name="age">
+      <input type="text" class="input" placeholder="연락처" name="phone">
+    </div>
+  <div class="msg">
+    <textarea placeholder="소개" name="introduction"></textarea>
+    <button type="submit" style="font-style: italic;" class="btn btn-primary">저장</button>
+
+   
+  </div>
+</div>
+</div>
+</form>
+</body>
+</html>

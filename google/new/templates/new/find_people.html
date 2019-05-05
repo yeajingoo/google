@@ -1,0 +1,131 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<style>
+@font-face {
+font-family: 'Binggrae-Bold';
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+font-weight: normal; font-style: normal;
+}
+fieldset{
+    padding: 0 1em 1em 1em;
+}
+
+legend{
+    padding: 1em;
+}
+* {box-sizing: border-box;}
+body{
+  margin: 0;
+}
+ div{
+  padding: 30px 0
+}
+form {
+  position: relative;
+  width: 300px;
+  margin: 0px auto;
+display: flex;
+font-family: 'Binggrae-Bold';
+}
+.d5 {
+  background: #c5ecfd;
+  font-family: 'Binggrae-Bold';
+}
+.d5 input, .d5 button {
+  outline: none;
+  background: transparent;
+}
+.d5 input {
+  width: 100%;
+  height: 42px;
+  padding-left: 15px;
+  border: 3px solid #ffffff;
+}
+.d5 button {
+  border: none;
+  height: 42px;
+  width: 42px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+.d5 button:before {
+  content: "\f002";
+  font-family: 'FontAwesome';
+  font-size: 16px;
+  color: #ffffff;
+}
+.d5 input:focus {
+  border-color: #311c24
+}
+select{
+  border-radius: 5px;
+  height:40px;
+  margin-right:5px;
+}
+#category{
+  height:30px;
+  width: 1550px;
+  font-family: 'Binggrae-Bold';
+}
+#category ul li{
+  list-style: none;
+  color: #000000;
+  background-color: #c5ecfd;
+  float :left;
+  line-height: 40px;
+  vertical-align: middle;
+  text-align: center;
+  border:1px solid #ffffff;
+  border-radius: 5px;
+  width:150px;
+}
+</style>
+</head>
+
+<body>
+  <div class="d5">
+  <form>
+    <select name="검색어">
+      <option value="검색어">검색어</option>
+      <option value="나라">나라</option>
+      <option value="지역">지역</option>
+      <option value="나이">나이</option>
+    </optgroup>
+  </select>
+
+    <input type="text" placeholder="검색어 입력">
+    <button type="submit"></button>
+  </form>
+</div>
+</form>
+
+<div id="category">
+<ul>
+<li style="width: 50px;">번호</li>
+<li style="width: 200px">이름</li>
+<li>나라</li>
+<li>지역</li>
+<li>나이</li>
+<li style="width: 750px;">기타</li>
+</ul>
+</div>
+</body>
+</html>
+
+{% endblock %}

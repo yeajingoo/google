@@ -1,0 +1,22 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<br>
+<h2>글 상세보기 페이지</h2>
+<h3>제목: {{  post.title  }}</h3>
+<h4>작성자: {{  post.writer  }}</h4>
+<h4>내용: {{  post.content  }}</h4>
+<h5>생성 시간: {{  post.created_at}}</h5>
+<a href="{% url 'new:update' post.pk %}">수정</a>
+<form action="{% url 'new:delete' post.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="삭제"/>
+    
+  
+</form><br><br><br><br>
+  <a href="{% url 'new:log' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">목록으로</a>
+
+
+
+
+{% endblock %}

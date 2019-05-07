@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect, get_object_or_404
 from .forms import PostForm
 from .models import Post
 from django.contrib.auth.models import User
-from .models import Post
+# from .models import Post
 from django.contrib import auth
 
 
@@ -22,21 +22,17 @@ def login(request):
     else:
         return render(request, 'login.html')
 
-#   def create(request):
-#     form = PostForm()
-#     if request.method == "POST":
-#         form = PostForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('new:list')
-#     return render(request, 'new/create.html', {'create': create})
     
 def create(request): 
+     
     if request.method == "POST":
+        
+        print(request.POST)
         title = request.POST.get('title')  
         content = request.POST.get('content')
         writer = request.POST.get('writer')
-        Post.objects.create(title=title, content=content, writer=writer)    
+        post = Post(title=title, content=content, writer=writer)
+        post.save()
         return redirect('new:log')
     return render(request, 'new/create.html')
 
@@ -48,6 +44,7 @@ def log(request):
     posts = Post.objects.all()
     return render(request, 'new/log.html', {"all_posts" : posts})
     
+
     
 def show(request, id):
     post = get_object_or_404(Post, pk=id)
@@ -75,9 +72,21 @@ def signup(request):
         return render(request, 'signup.html')
     return render(request, 'home.html')
 
-def find_people(request):
-    return render(request, 'find_people.html')
-    
+def findpeople(request):
+    try:
+        type_search = request.POST['selSearchType']
+        txt_search = request.POST['txtSearch']
+        if type_search == "나라":
+            people = Post.objects.filter(country=txt_search )
+        elif type_search == "지역":
+            people = Post.objects.filter(region=txt_search )
+        else :
+            people = Post.objects.filter(age=txt_search )
+        
+        
+    except:
+        people = Post.objects.all()
+    return render(request, 'new/findpeople.html', {'people' : people})
     
         
 def update(request, id):
@@ -100,11 +109,6 @@ def delete(request, id):
         post.delete()
         return redirect('new:log')
         
-def creator(request):
-    return render(request, 'new/creator.html') 
-    
-def descript(request):
-    return render(request, 'new/descript.html') 
 
 def save(request):
     new_post=Post()
@@ -120,3 +124,10 @@ def save(request):
 def mypage(request):
     return render(request,'new/mypage.html')
     
+    
+def introduce(request):
+    return render(request, 'introduce.html')
+    
+def logout(request):
+    auth.logout(request)
+    return render(request,'login.html')

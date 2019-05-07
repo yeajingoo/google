@@ -1,0 +1,28 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<br>
+<h2>친구 상세보기 페이지</h2>
+ {% for man in posts%}
+<h3>이름: {{  man.name  }}</h3>
+<h4>나라자: {{  man.country  }}</h4>
+<h4>지역: {{  man.region  }}</h4>
+<h5>나이: {{  man.age }}</h5>
+<h5>핸드폰 번호: {{  man.phone }}</h5>
+<h5>자기소개: {{  man.introduction }}</h5>
+<a href="{% url 'new:update2' man.pk %}">수정</a>
+<form action="{% url 'new:delete2' man.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="삭제"/>
+    
+=================================================
+ {% endfor %}
+
+  
+</form><br><br><br><br>
+  <a href="{% url 'new:home' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">home</a>
+
+
+
+
+{% endblock %}

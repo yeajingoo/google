@@ -108,7 +108,7 @@ td{
 
 <body>
   <div class="d5">
-  <form action="{% url 'findpeople' %}" method="POST">
+  <form action="{% url 'new:findpeople' %}" method="POST">
         {% csrf_token %}
     <select name="selSearchType">
       <option value="나라" >나라</option>
@@ -135,6 +135,7 @@ td{
         <th>연락처</th>
         <th>소개</th>
       </tr>
+{% for person in people %}
       <tr>
         <td>{{person.name}}</td>
         <td>{{person.country}}</td>
@@ -143,6 +144,7 @@ td{
         <td>{{person.phone}}</td>
         <td>{{person.introduction}}</td>
       </tr>
+      {% endfor %}
     </table>
   </div>
 

@@ -11,10 +11,10 @@ urlpatterns = [
     path('show/<int:id>/', views.show, name="show"),
     path('update/<int:id>/', views.update, name='update'),
     path('delete/<int:id>/', views.delete, name='delete'),
-    path('creator/', views.creator, name='creator'),
-    path('descript/', views.descript, name='descript'),
     path('mypage/',views.mypage, name="mypage"),
     path('save/',views.save, name="save"),
+    path('introduce/', views.introduce, name='introduce'),
+    path('logout/',views.logout,name="logout"),
+    path('findpeople/',views.findpeople, name="findpeople"),
     
-   
   ]
